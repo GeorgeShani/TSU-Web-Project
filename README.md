@@ -1,6 +1,6 @@
 # Echowave 🎵
 
-A full-featured music player web application built for the TSU Web Project course.
+A full-featured music player web application built for the TSU Web Programming course.
 
 **Project:** TSU Web Project  
 **Lecturer:** [Miranda Makharashvili](https://github.com/MiraMakh)   
