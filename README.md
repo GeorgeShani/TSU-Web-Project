@@ -138,14 +138,6 @@ The application uses a normalized MySQL database structure with tables for:
 - Playlists and user preferences
 - File storage references
 
-## 🎯 Future Enhancements
-
-- Real-time collaboration on playlists
-- Social sharing features
-- Advanced audio equalizer
-- Mobile application development
-- Integration with music streaming APIs
-
 ## 📄 License
 
 This project is developed as part of the TSU Web Project course.
