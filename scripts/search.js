@@ -16,12 +16,12 @@ let tracksList, artistsGrid, albumsGrid, playlistsGrid;
 let tracksToggle, artistsToggle, albumsToggle, playlistsToggle;
 
 // Mock data
-let mockData = {};
+let searchData = {};
 
 fetch("../includes/get_search_data.php")
   .then((res) => res.json())
   .then((data) => {
-    mockData = data;
+    searchData = data;
     console.log(data);
   });
 
@@ -121,24 +121,24 @@ async function performSearch(query) {
 function filterResults(query) {
   const searchTerm = query.toLowerCase();
 
-  const filteredTracks = mockData.tracks.filter(
+  const filteredTracks = searchData.tracks.filter(
     (track) =>
       track.title.toLowerCase().includes(searchTerm) ||
       track.artist.toLowerCase().includes(searchTerm) ||
       track.album.toLowerCase().includes(searchTerm)
   );
 
-  const filteredArtists = mockData.artists.filter((artist) =>
+  const filteredArtists = searchData.artists.filter((artist) =>
     artist.name.toLowerCase().includes(searchTerm)
   );
 
-  const filteredAlbums = mockData.albums.filter(
+  const filteredAlbums = searchData.albums.filter(
     (album) =>
       album.title.toLowerCase().includes(searchTerm) ||
       album.artist.toLowerCase().includes(searchTerm)
   );
 
-  const filteredPlaylists = mockData.playlists.filter(
+  const filteredPlaylists = searchData.playlists.filter(
     (playlist) =>
       playlist.name.toLowerCase().includes(searchTerm) ||
       playlist.creator.toLowerCase().includes(searchTerm)
