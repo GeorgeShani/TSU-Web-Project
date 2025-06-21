@@ -126,8 +126,6 @@ The application consists of 8 main pages:
 
 - Password hashing and salting
 - SQL injection prevention
-- XSS protection
-- CSRF token validation
 - Secure file upload validation
 
 ## 📊 Database Schema
