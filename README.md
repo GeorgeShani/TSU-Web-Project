@@ -1,10 +1,10 @@
 # Echowave 🎵
 
-A full-featured music player web application built for the TSU Web Project course.
+A full-featured music player web application built for the TSU Web Programming course.
 
-**Lecturer:** Miranda Makharashvili  
 **Project:** TSU Web Project  
-**Developer:** [Your Name]
+**Lecturer:** [Miranda Makharashvili](https://github.com/MiraMakh)   
+**Developer:** [Giorgi Shanidze](https://github.com/GeorgeShani)
 
 ## 📖 Overview
 
@@ -98,11 +98,7 @@ The application consists of 8 main pages:
    - Update all necessary environment variables
 
 6. **Start the development server**
-   ```bash
-   # Using Laravel Herd
-   herd serve
-   
-   # Or using PHP built-in server
+   ```bash   
    php -S localhost:8000
    ```
    - Access the application at the URL provided by Herd or `http://localhost:8000`
@@ -130,8 +126,6 @@ The application consists of 8 main pages:
 
 - Password hashing and salting
 - SQL injection prevention
-- XSS protection
-- CSRF token validation
 - Secure file upload validation
 
 ## 📊 Database Schema
@@ -142,20 +136,12 @@ The application uses a normalized MySQL database structure with tables for:
 - Playlists and user preferences
 - File storage references
 
-## 🎯 Future Enhancements
-
-- Real-time collaboration on playlists
-- Social sharing features
-- Advanced audio equalizer
-- Mobile application development
-- Integration with music streaming APIs
-
 ## 📄 License
 
-This project is developed as part of the TSU Web Project course.
+This project is developed as part of the TSU Web Programming course.
 
 ---
 
 **Academic Project** - Tbilisi State University  
-**Course:** Web Development  
-**Instructor:** Miranda Makharashvili
+**Course:** Web Programming  
+**Instructor:** [Miranda Makharashvili](https://github.com/MiraMakh) 
