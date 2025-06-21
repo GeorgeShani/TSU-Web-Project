@@ -4,7 +4,7 @@ A full-featured music player web application built for the TSU Web Project cours
 
 **Lecturer:** [Miranda Makharashvili](https://github.com/MiraMakh) 
 **Project:** TSU Web Project  
-**Developer:** Giorgi Shanidze
+**Developer:** [Giorgi Shanidze](https://github.com/GeorgeShani)
 
 ## 📖 Overview
 
