@@ -5783,11 +5783,11 @@ button {
 
   &__scroll {
     width: 100%;
-    max-width: 28rem;
-    padding: 0 1rem;
+    max-width: 30rem;
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
+    position: relative;
 
     &--title {
       margin-bottom: 0.4rem;
@@ -5814,12 +5814,16 @@ button {
     }
 
     &-text {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       white-space: nowrap;
+      will-change: transform;
+      transition: transform 0.3s ease;
+      gap: 4px;
     }
 
     &-text.animate {
-      animation: scroll-text 8s linear infinite;
+      animation: scroll-text 6s linear infinite alternate;
     }
   }
 

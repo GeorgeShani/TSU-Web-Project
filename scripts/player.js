@@ -466,9 +466,11 @@ class MusicPlayer {
 
     // Only animate if text is wider than container
     if (textWidth > containerWidth) {
-      element.classList.add("player__scroll-text");
+      const scrollDistance = textWidth - containerWidth;
+      element.style.setProperty("--scroll-distance", `-${scrollDistance}px`);
+      element.classList.add("animate");
     } else {
-      element.classList.remove("player__scroll-text");
+      element.classList.remove("animate");
     }
   }
 
