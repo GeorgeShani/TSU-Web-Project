@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <mask id="cutout">
+      <rect width="16" height="16" fill="white" rx="3" ry="3"/>
+      <path d="M6.826 10.88H10.5V12h-5V4.002h5v1.12H6.826V7.4h3.457v1.073H6.826z" fill="black"/>
+    </mask>
+  </defs>
+  <rect width="16" height="16" rx="3" ry="3" fill="rgba(255, 255, 255, 0.8)" mask="url(#cutout)"/>
+</svg>
+  
