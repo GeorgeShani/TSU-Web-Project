@@ -138,10 +138,10 @@ The application uses a normalized MySQL database structure with tables for:
 
 ## 📄 License
 
-This project is developed as part of the TSU Web Project course.
+This project is developed as part of the TSU Web Programming course.
 
 ---
 
 **Academic Project** - Tbilisi State University  
-**Course:** Web Development  
+**Course:** Web Programming  
 **Instructor:** [Miranda Makharashvili](https://github.com/MiraMakh) 
