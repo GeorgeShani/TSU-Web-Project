@@ -3,7 +3,7 @@
 A full-featured music player web application built for the TSU Web Project course.
 
 **Project:** TSU Web Project  
-**Lecturer:** [Miranda Makharashvili](https://github.com/MiraMakh) 
+**Lecturer:** [Miranda Makharashvili](https://github.com/MiraMakh)   
 **Developer:** [Giorgi Shanidze](https://github.com/GeorgeShani)
 
 ## 📖 Overview
