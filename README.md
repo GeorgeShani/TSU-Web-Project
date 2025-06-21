@@ -98,11 +98,7 @@ The application consists of 8 main pages:
    - Update all necessary environment variables
 
 6. **Start the development server**
-   ```bash
-   # Using Laravel Herd
-   herd serve
-   
-   # Or using PHP built-in server
+   ```bash   
    php -S localhost:8000
    ```
    - Access the application at the URL provided by Herd or `http://localhost:8000`
