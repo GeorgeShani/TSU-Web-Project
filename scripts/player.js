@@ -1,4 +1,4 @@
-let mockTracks = [];
+let tracks = [];
 
 const params = new URLSearchParams(window.location.search);
 const type = params.get("type"); // e.g., "track"
@@ -10,8 +10,8 @@ async function initializeMusicPlayer() {
     try {
       const response = await fetch(`../includes/get_music.php?type=${type}&id=${id}`);
       const data = await response.json();
-      mockTracks = data;
-      console.log('Tracks loaded:', mockTracks);
+      tracks = data;
+      console.log('Tracks loaded:', tracks);
     } catch (err) {
       console.error("Fetch failed:", err);
     }
@@ -28,7 +28,7 @@ async function initializeMusicPlayer() {
 class MusicPlayer {
   constructor() {
     // Track management
-    this.tracks = mockTracks;
+    this.tracks = tracks;
     this.currentTrackIndex = 0;
     this.isSidebarOpen = false;
 
