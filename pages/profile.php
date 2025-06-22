@@ -44,7 +44,7 @@
 
         LEFT JOIN track_features ON track_features.track_id = tracks.id
         LEFT JOIN artists ON artists.id = track_features.artist_id OR artists.id = tracks.artist_id
-        WHERE tracks.artist_id = ?
+        WHERE tracks.artist_id = ? AND tracks.album_id IS NULL
         GROUP BY tracks.id
       ");
       $stmt->execute([$artist_data['artist_id']]);
