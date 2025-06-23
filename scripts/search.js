@@ -15,7 +15,6 @@ let tracksSection, artistsSection, albumsSection, playlistsSection;
 let tracksList, artistsGrid, albumsGrid, playlistsGrid;
 let tracksToggle, artistsToggle, albumsToggle, playlistsToggle;
 
-// Mock data
 let searchData = {};
 
 fetch("../includes/get_search_data.php")

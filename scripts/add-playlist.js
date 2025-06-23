@@ -26,7 +26,6 @@ const elements = {
   playlistForm: document.getElementById("playlistForm"),
 };
 
-// Mock data for testing
 let tracks = [];
 
 fetch("../includes/get_tracks.php")
