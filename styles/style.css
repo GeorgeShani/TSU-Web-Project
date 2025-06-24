@@ -5578,7 +5578,7 @@ button {
   white-space: nowrap;
   will-change: transform;
   transition: transform 0.3s ease;
-  gap: 4px;
+  gap: 6px;
 }
 .player__scroll-text.animate {
   animation: scroll-text 6s linear infinite alternate;
@@ -5646,12 +5646,6 @@ button {
 .player__track-item__duration {
   font-size: 0.875rem;
   opacity: 0.6;
-}
-.player__artist-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
 }
 .player__explicit {
   width: 16px;

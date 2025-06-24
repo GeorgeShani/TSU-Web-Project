@@ -71,7 +71,7 @@
           <h2 class="player__track-title player__scroll-text" id="title-scroll">Loading track...</h2>
         </div>
         <div class="player__scroll player__scroll--artist">
-          <div class="player__artist-info player__scroll-text" id="artist-scroll">
+          <div class="player__scroll-text" id="artist-scroll">
             <img src="../images/explicit.svg" alt="Explicit Content" id="explicit-content" class="player__explicit player__explicit--hidden" />
             <h3 class="player__artist-name" id="artist-text">Loading Artist...</h3>
           </div>

@@ -5819,7 +5819,7 @@ button {
       white-space: nowrap;
       will-change: transform;
       transition: transform 0.3s ease;
-      gap: 4px;
+      gap: 6px;
     }
 
     &-text.animate {
@@ -5899,13 +5899,6 @@ button {
       font-size: 0.875rem;
       opacity: 0.6;
     }
-  }
-
-  &__artist-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
   }
 
   &__explicit {
