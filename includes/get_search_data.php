@@ -13,8 +13,18 @@ $tracksQuery = "
     CONCAT(
       main_artist.stage_name,
       CASE 
-        WHEN GROUP_CONCAT(DISTINCT featured_artists.stage_name ORDER BY featured_artists.stage_name SEPARATOR ', ') IS NOT NULL 
-        THEN CONCAT(', ', GROUP_CONCAT(DISTINCT featured_artists.stage_name ORDER BY featured_artists.stage_name SEPARATOR ', '))
+        WHEN GROUP_CONCAT(DISTINCT 
+              CASE 
+                WHEN featured_artists.id != main_artist.id THEN featured_artists.stage_name 
+                ELSE NULL 
+              END 
+              ORDER BY featured_artists.id SEPARATOR ', ') IS NOT NULL 
+        THEN CONCAT(', ', GROUP_CONCAT(DISTINCT 
+              CASE 
+                WHEN featured_artists.id != main_artist.id THEN featured_artists.stage_name 
+                ELSE NULL 
+              END 
+              ORDER BY featured_artists.id SEPARATOR ', '))
         ELSE ''
       END
     ) AS all_artists
@@ -30,7 +40,7 @@ $tracksQuery = "
     tracks.cover_path, 
     albums.title, 
     main_artist.stage_name
-  ORDER BY tracks.id ASC;
+  ORDER BY tracks.id ASC
 ";
 
 // 2. Fetch Artists with Profile Pictures

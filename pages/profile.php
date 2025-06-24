@@ -28,24 +28,30 @@
       $stmt = $pdo->prepare("
         SELECT 
           tracks.*,
-          GROUP_CONCAT(
-            DISTINCT artists.stage_name
-            ORDER BY 
-              CASE 
-                WHEN artists.id = main_artist.id THEN 0 
-                ELSE 1 
-              END,
-              artists.stage_name
-            SEPARATOR ', '
+          CONCAT(
+            main_artist.stage_name,
+            CASE 
+              WHEN GROUP_CONCAT(DISTINCT 
+                      CASE 
+                        WHEN artists.id != main_artist.id THEN artists.stage_name 
+                        ELSE NULL 
+                      END 
+                      ORDER BY artists.id SEPARATOR ', ') IS NOT NULL 
+              THEN CONCAT(', ', GROUP_CONCAT(DISTINCT 
+                      CASE 
+                        WHEN artists.id != main_artist.id THEN artists.stage_name 
+                        ELSE NULL 
+                      END 
+                      ORDER BY artists.id SEPARATOR ', '))
+              ELSE ''
+            END
           ) AS all_artists
-
         FROM tracks
         JOIN artists AS main_artist ON tracks.artist_id = main_artist.id
-
         LEFT JOIN track_features ON track_features.track_id = tracks.id
-        LEFT JOIN artists ON artists.id = track_features.artist_id OR artists.id = tracks.artist_id
+        LEFT JOIN artists ON artists.id = track_features.artist_id
         WHERE tracks.artist_id = ? AND tracks.album_id IS NULL
-        GROUP BY tracks.id
+        GROUP BY tracks.id;
       ");
       $stmt->execute([$artist_data['artist_id']]);
       $tracks = $stmt->fetchAll(PDO::FETCH_ASSOC);

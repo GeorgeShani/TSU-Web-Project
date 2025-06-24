@@ -49,18 +49,15 @@ if ($type === "track") {
       tracks.vinyl_primary_color,
       tracks.vinyl_secondary_color,
       albums.title AS album_title,
-      GROUP_CONCAT(
-        DISTINCT artists.stage_name
-        ORDER BY 
-          CASE WHEN artists.id = main_artist.id THEN 0 ELSE 1 END,
-          artists.stage_name
-        SEPARATOR ', '
+      CONCAT(
+        main_artist.stage_name,
+        IF(COUNT(DISTINCT features.id) > 0, CONCAT(', ', GROUP_CONCAT(DISTINCT features.stage_name ORDER BY features.id SEPARATOR ', ')), '')
       ) AS all_artists
     FROM tracks
     LEFT JOIN albums ON tracks.album_id = albums.id
     JOIN artists AS main_artist ON tracks.artist_id = main_artist.id
     LEFT JOIN track_features ON track_features.track_id = tracks.id
-    LEFT JOIN artists ON artists.id = track_features.artist_id OR artists.id = tracks.artist_id
+    LEFT JOIN artists AS features ON features.id = track_features.artist_id AND features.id != main_artist.id
     WHERE albums.id = ?
     GROUP BY tracks.id
     ORDER BY tracks.id ASC
