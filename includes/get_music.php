@@ -22,18 +22,29 @@ if ($type === "track") {
       tracks.vinyl_primary_color,
       tracks.vinyl_secondary_color,
       albums.title AS album_title,
-      GROUP_CONCAT(
-        DISTINCT artists.stage_name
-        ORDER BY 
-          CASE WHEN artists.id = main_artist.id THEN 0 ELSE 1 END,
-          artists.stage_name
-        SEPARATOR ', '
+      CONCAT(
+        main_artist.stage_name,
+        CASE 
+          WHEN GROUP_CONCAT(DISTINCT 
+                  CASE 
+                    WHEN artists.id != main_artist.id THEN artists.stage_name 
+                    ELSE NULL 
+                  END 
+                  ORDER BY artists.id SEPARATOR ', ') IS NOT NULL 
+          THEN CONCAT(', ', GROUP_CONCAT(DISTINCT 
+                  CASE 
+                    WHEN artists.id != main_artist.id THEN artists.stage_name 
+                    ELSE NULL 
+                  END 
+                  ORDER BY artists.id SEPARATOR ', '))
+          ELSE ''
+        END
       ) AS all_artists
     FROM tracks
     LEFT JOIN albums ON tracks.album_id = albums.id
     JOIN artists AS main_artist ON tracks.artist_id = main_artist.id
     LEFT JOIN track_features ON track_features.track_id = tracks.id
-    LEFT JOIN artists ON artists.id = track_features.artist_id OR artists.id = tracks.artist_id
+    LEFT JOIN artists ON artists.id = track_features.artist_id
     WHERE tracks.id = ?
     GROUP BY tracks.id
     LIMIT 1
@@ -74,22 +85,33 @@ if ($type === "track") {
       tracks.vinyl_secondary_color,
       albums.title AS album_title,
       ANY_VALUE(playlist_items.order_index) AS order_index,
-      GROUP_CONCAT(
-        DISTINCT artists.stage_name
-        ORDER BY 
-          CASE WHEN artists.id = main_artist.id THEN 0 ELSE 1 END,
-          artists.stage_name
-        SEPARATOR ', '
+      CONCAT(
+        main_artist.stage_name,
+        CASE 
+          WHEN GROUP_CONCAT(DISTINCT 
+                  CASE 
+                    WHEN artists.id != main_artist.id THEN artists.stage_name 
+                    ELSE NULL 
+                  END 
+                  ORDER BY artists.id SEPARATOR ', ') IS NOT NULL 
+          THEN CONCAT(', ', GROUP_CONCAT(DISTINCT 
+                  CASE 
+                    WHEN artists.id != main_artist.id THEN artists.stage_name 
+                    ELSE NULL 
+                  END 
+                  ORDER BY artists.id SEPARATOR ', '))
+          ELSE ''
+        END
       ) AS all_artists
     FROM playlist_items
     JOIN tracks ON playlist_items.track_id = tracks.id
     LEFT JOIN albums ON tracks.album_id = albums.id
     JOIN artists AS main_artist ON tracks.artist_id = main_artist.id
     LEFT JOIN track_features ON track_features.track_id = tracks.id
-    LEFT JOIN artists ON artists.id = track_features.artist_id OR artists.id = tracks.artist_id
+    LEFT JOIN artists ON artists.id = track_features.artist_id
     WHERE playlist_items.playlist_id = ?
     GROUP BY tracks.id
-    ORDER BY order_index ASC
+    ORDER BY order_index ASC;
   ";
 }
 
