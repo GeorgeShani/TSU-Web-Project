@@ -272,6 +272,11 @@ function createTrackElement(track) {
       <div class="track-item__subtitle">${track.artist} • ${track.album}</div>
     </div>
   `;
+
+  trackDiv.onclick = () => {
+    window.location.href = `./play.php?type=track&id=${track.id}`;
+  };
+
   return trackDiv;
 }
 
@@ -295,6 +300,11 @@ function createAlbumElement(album) {
     <div class="grid-item__subtitle">${album.artist} • ${album.year}</div>
     <div class="grid-item__meta">${album.trackCount} tracks</div>
   `;
+
+  albumDiv.onclick = () => {
+    window.location.href = `./play.php?type=album&id=${track.id}`;
+  };
+
   return albumDiv;
 }
 
