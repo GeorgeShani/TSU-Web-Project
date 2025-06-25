@@ -296,11 +296,15 @@ class MusicPlayer {
         index === this.currentTrackIndex ? "active" : ""
       }`;
 
-      // Get duration from metadata if available
       const metadata = this.songMetadata.get(index);
       const buffer = this.audioBuffers.get(index);
       const duration = metadata?.duration || buffer?.duration;
       const durationText = duration ? this.formatTime(duration) : "--:--";
+
+      // Conditional explicit icon
+      const explicitIcon = track.explicit
+        ? `<img src="../images/explicit.svg" alt="Explicit Content" width="14" height="14" />`
+        : "";
 
       trackItem.innerHTML = `
         <div class="player__track-item__content">
@@ -309,9 +313,10 @@ class MusicPlayer {
             <p class="player__track-item__title">${this.escapeHtml(
               track.title
             )}</p>
-            <p class="player__track-item__artist">${this.escapeHtml(
-              track.artist
-            )}</p>
+            <p class="player__track-item__artist">
+              ${explicitIcon}
+              ${this.escapeHtml(track.artist)}
+            </p>
           </div>
           <span class="player__track-item__duration">${durationText}</span>
         </div>
@@ -319,7 +324,7 @@ class MusicPlayer {
 
       trackItem.addEventListener("click", () => this.selectTrack(index));
       this.trackList.appendChild(trackItem);
-    });
+    });    
   }
 
   updateUI() {

@@ -5651,12 +5651,15 @@ button {
   margin: 0.5rem 0;
 }
 .player__track-item__artist {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
   opacity: 0.7;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0.5rem 0;
+  gap: 6px;
 }
 .player__track-item__duration {
   font-size: 0.875rem;
