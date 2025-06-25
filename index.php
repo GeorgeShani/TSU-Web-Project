@@ -165,10 +165,10 @@
 
                     $stmt = $pdo->prepare("SELECT * FROM playlist_items WHERE playlist_id = ?");
                     $stmt->execute([$playlist['id']]);
-                    $playlistTrackCount = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $playlistTracks = $stmt->fetchAll(PDO::FETCH_ASSOC);
                   ?>
                   <h3 class="playlist-card__title"><?= $playlist['title'] ?></h3>
-                  <p class="playlist-card__count"><?= count($playlistTrackCount) ?> songs</p>
+                  <p class="playlist-card__count"><?= count($playlistTracks) ?> songs</p>
                 </div>
               </a>
             <?php endforeach; ?>
