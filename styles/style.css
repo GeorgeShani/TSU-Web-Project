@@ -5463,7 +5463,7 @@ button {
 }
 .player__track-message {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #d8b4fe; /* light purple text */
   background: linear-gradient(135deg, #1f2937 0%, #581c87 50%, #1f2937 100%);
   padding: 12px 20px;
