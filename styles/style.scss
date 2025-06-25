@@ -5715,6 +5715,10 @@ button {
     @media (min-width: 1024px) {
       padding: 0;
     }
+
+    @media (max-width: 600px) {
+      max-width: 100%;
+    }
   }
 
   &__record {

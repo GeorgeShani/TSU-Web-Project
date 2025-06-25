@@ -5481,6 +5481,11 @@ button {
     padding: 0;
   }
 }
+@media (max-width: 600px) {
+  .player__main {
+    max-width: 100%;
+  }
+}
 .player__record {
   position: relative;
   margin: 0 1rem 2rem;
