@@ -9,12 +9,11 @@
     $stmt = $pdo->prepare("SELECT title FROM tracks WHERE id = ?");
     $stmt->execute([$id]);
     $music_collection_name = ($stmt->fetch(PDO::FETCH_ASSOC))['title'] ?? null;
-  } 
-  if ($type === "album") {
+  } else if ($type === "album") {
     $stmt = $pdo->prepare("SELECT title FROM albums WHERE id = ?");
     $stmt->execute([$id]);
     $music_collection_name = ($stmt->fetch(PDO::FETCH_ASSOC))['title'] ?? null;
-  } elseif ($type === "playlist") {
+  } else if ($type === "playlist") {
     $stmt = $pdo->prepare("SELECT title FROM playlists WHERE id = ?");
     $stmt->execute([$id]);
     $music_collection_name = ($stmt->fetch(PDO::FETCH_ASSOC))['title'] ?? null;
