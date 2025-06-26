@@ -310,12 +310,12 @@ class MusicPlayer {
         <div class="player__track-item__content">
           <span class="player__track-item__number">${index + 1}</span>
           <div class="player__track-item__info">
-            <p class="player__track-item__title">${this.escapeHtml(
-              track.title
-            )}</p>
+            <p class="player__track-item__title">
+              ${this.escapeHtml(track.title)}
+            </p>
             <p class="player__track-item__artist">
-              ${explicitIcon}
-              ${this.escapeHtml(track.artist)}
+              ${explicitIcon}  
+              <span class="artist-name">${this.escapeHtml(track.artist)}</span>
             </p>
           </div>
           <span class="player__track-item__duration">${durationText}</span>

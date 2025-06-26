@@ -5646,6 +5646,7 @@ button {
   min-width: 0;
 }
 .player__track-item__title {
+  max-width: 24rem;
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
@@ -5658,11 +5659,9 @@ button {
   gap: 6px;
   font-size: 0.9rem;
   opacity: 0.7;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   margin: 0.5rem 0;
   max-width: 100%;
+  overflow: hidden;
 }
 .player__track-item__duration {
   font-size: 0.875rem;
@@ -5785,6 +5784,14 @@ button {
     width: 5rem;
     height: 5rem;
   }
+}
+
+.artist-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 100%;
 }
 
 .profile {
