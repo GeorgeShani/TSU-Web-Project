@@ -392,9 +392,9 @@ class MusicPlayer {
     // Update record spinning animation
     if (this.record) {
       if (this.isPlaying) {
-        this.record.classList.add("spinning", "active");
+        this.record.classList.add("spinning");
       } else {
-        this.record.classList.remove("spinning", "active");
+        this.record.classList.remove("spinning");
       }
     }
 
