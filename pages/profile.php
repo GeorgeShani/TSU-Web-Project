@@ -32,17 +32,17 @@
             main_artist.stage_name,
             CASE 
               WHEN GROUP_CONCAT(DISTINCT 
-                      CASE 
-                        WHEN artists.id != main_artist.id THEN artists.stage_name 
-                        ELSE NULL 
-                      END 
-                      ORDER BY artists.id SEPARATOR ', ') IS NOT NULL 
+                CASE 
+                  WHEN artists.id != main_artist.id THEN artists.stage_name 
+                  ELSE NULL 
+                END 
+                ORDER BY artists.id SEPARATOR ', ') IS NOT NULL 
               THEN CONCAT(', ', GROUP_CONCAT(DISTINCT 
-                      CASE 
-                        WHEN artists.id != main_artist.id THEN artists.stage_name 
-                        ELSE NULL 
-                      END 
-                      ORDER BY artists.id SEPARATOR ', '))
+                CASE 
+                  WHEN artists.id != main_artist.id THEN artists.stage_name 
+                  ELSE NULL 
+                END 
+                ORDER BY artists.id SEPARATOR ', '))
               ELSE ''
             END
           ) AS all_artists
