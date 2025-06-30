@@ -5795,6 +5795,7 @@ button {
 }
 
 .profile {
+  min-width: 100%;
   padding: 1.5rem;
   padding-bottom: 8rem;
 }
