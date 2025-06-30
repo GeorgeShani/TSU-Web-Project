@@ -557,7 +557,7 @@ class MusicPlayer {
 
   scheduleNextTrack(duration) {
     this.clearNextTrackTimeout();
-    const timeUntilNext = Math.max(0, (duration - 0.02) * 1000);
+    const timeUntilNext = Math.max(0, (duration - 0.025) * 1000);
     this.nextSongTimeout = setTimeout(() => {
       if (this.isPlaying) this.transitionToNextTrack();
     }, timeUntilNext);
