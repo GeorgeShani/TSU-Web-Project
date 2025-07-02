@@ -302,7 +302,7 @@ function createAlbumElement(album) {
   `;
 
   albumDiv.onclick = () => {
-    window.location.href = `./play.php?type=album&id=${track.id}`;
+    window.location.href = `./play.php?type=album&id=${album.id}`;
   };
 
   return albumDiv;
