@@ -5749,6 +5749,11 @@ button {
     &.spinning {
       animation: spin 10s linear infinite;
     }
+
+    &.resetting {
+      pointer-events: none; /* prevent clicks if needed */
+      will-change: transform;
+    }
   }
 
   &__album-cover {

@@ -25,6 +25,7 @@ async function initializeMusicPlayer() {
     }
   }
 }
+
 class MusicPlayer {
   constructor() {
     // Track management
@@ -52,6 +53,9 @@ class MusicPlayer {
     this.nextSongTimeout = null;
     this.progressInterval = null;
     this.resizeObserver = null;
+
+    this.lastSpinStart = 0; // timestamp when spin started
+    this.currentRotation = 0; // in degrees
 
     this.initializePlayer();
   }
@@ -392,9 +396,36 @@ class MusicPlayer {
     // Update record spinning animation
     if (this.record) {
       if (this.isPlaying) {
+        // Resume spinning
+        this.record.classList.remove("resetting");
+        this.record.style.transition = "none";
+        this.record.style.animation = "";
+        this.record.style.transform = "";
+
+        // Force reflow before restarting animation
+        void this.record.offsetWidth;
+
         this.record.classList.add("spinning");
+
+        // Track spin start
+        this.lastSpinStart = performance.now();
       } else {
+        // Calculate paused angle
+        const elapsed = performance.now() - this.lastSpinStart;
+        const degrees = ((elapsed / 10000) * 360) % 360;
+
+        // Stop animation, set current angle
         this.record.classList.remove("spinning");
+        this.record.style.animation = "none";
+        this.record.style.transition = "none";
+        this.record.style.transform = `rotate(${degrees}deg)`;
+
+        void this.record.offsetWidth; // force reflow
+
+        // Smooth reset to 0deg
+        this.record.classList.add("resetting");
+        this.record.style.transition = "transform 0.6s ease";
+        this.record.style.transform = "rotate(0deg)";
       }
     }
 
