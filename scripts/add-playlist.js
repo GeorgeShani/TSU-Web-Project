@@ -255,6 +255,7 @@ function setupDragAndDrop() {
 
   trackElements.forEach((element, index) => {
     element.addEventListener("dragstart", (e) => {
+      e.preventDefault();
       draggedIndex = index;
       element.classList.add("add-playlist__track-item--dragging");
       e.dataTransfer.effectAllowed = "move";
@@ -279,6 +280,7 @@ function setupDragAndDrop() {
     });
 
     element.addEventListener("dragend", () => {
+      e.preventDefault();
       element.classList.remove("add-playlist__track-item--dragging");
       draggedIndex = null;
     });
@@ -302,7 +304,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (file) handleImageSelect(file);
   });
 
-  elements.imageDropzone.addEventListener("click", () => {
+  elements.imageDropzone.addEventListener("click", (e) => {
+    e.preventDefault();
     elements.imageInput.click();
   });
 
