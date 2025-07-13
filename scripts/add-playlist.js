@@ -136,7 +136,7 @@ function displaySearchResults(tracks) {
                 : ""
             }
           </div>
-          <button class="add-playlist__search-result-action" onclick="addTrack('${
+          <button class="add-playlist__search-result-action" type="button" onclick="addTrack('${
             track.id
           }')">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -222,7 +222,7 @@ function updateSelectedTracks() {
             <h4 class="add-playlist__track-title">${track.title}</h4>
             <p class="add-playlist__track-artist">${track.artist}</p>
           </div>
-          <button class="add-playlist__track-remove" onclick="removeTrack('${
+          <button class="add-playlist__track-remove" type="button" onclick="removeTrack('${
             track.id
           }')">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -254,15 +254,17 @@ function setupDragAndDrop() {
   const trackElements = document.querySelectorAll(".add-playlist__track-item");
 
   trackElements.forEach((element, index) => {
+    // Ensure data-index is set
+    element.dataset.index = index;
+
     element.addEventListener("dragstart", (e) => {
-      e.preventDefault();
       draggedIndex = index;
       element.classList.add("add-playlist__track-item--dragging");
       e.dataTransfer.effectAllowed = "move";
     });
 
     element.addEventListener("dragover", (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Required to allow drop
       e.dataTransfer.dropEffect = "move";
     });
 
@@ -274,13 +276,16 @@ function setupDragAndDrop() {
         const draggedTrack = playlistData.tracks[draggedIndex];
         playlistData.tracks.splice(draggedIndex, 1);
         playlistData.tracks.splice(dropIndex, 0, draggedTrack);
-        updateSelectedTracks();
-        updateHiddenInput();
+
+        updateSelectedTracks(); // This should re-render the DOM
+        updateHiddenInput(); // Optional if you store state in a hidden input
+
+        // Reinitialize drag and drop since DOM has changed
+        setupDragAndDrop();
       }
     });
 
-    element.addEventListener("dragend", () => {
-      e.preventDefault();
+    element.addEventListener("dragend", (e) => {
       element.classList.remove("add-playlist__track-item--dragging");
       draggedIndex = null;
     });
