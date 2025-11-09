@@ -25,9 +25,20 @@ function register($full_name, $username, $email, $password, $role = 'listener')
   global $pdo;
 
   $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+  
   $stmt = $pdo->prepare("INSERT INTO users (full_name, username, email, password_hash, role) VALUES (?, ?, ?, ?, ?)");
-  return $stmt->execute([$full_name, $username, $email, $hashedPassword, $role]);
+  $stmt->execute([$full_name, $username, $email, $hashedPassword, $role]);
+
+  $userId = $pdo->lastInsertId();
+
+  if ($role === "artist") {
+    $artist_stmt = $pdo->prepare("INSERT INTO artists (user_id) VALUES (?)");
+    $artist_stmt->execute([$userId]);
+  }
+
+  return $userId;
 }
+
 
 function isLoggedIn()
 {
