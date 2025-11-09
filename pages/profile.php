@@ -96,10 +96,19 @@
               <?php endif; ?>
             </div>
             <div class="profile__info">
-              <h1 class="profile__name"><?= $artist_data['stage_name'] ?></h1>
+              <h1 class="profile__name">
+                <?php if (isset($artist_data['stage_name']) || $artist_data['stage_name'] !== ""): ?>
+                  <?= $artist_data['stage_name'] ?> 
+                <?php else: ?>
+                  <?= $artist_data['full_name'] ?>
+                <?php endif; ?>
+              </h1>
               <p class="profile__stats" style="font-weight: 600;"><?= "@" . $artist_data['username'] ?></p>
               <p class="profile__stats">
-                <?= ucfirst($role) ?> • <?= $statsText ?>
+                <?= ucfirst($role) ?> 
+                <?php if (isset($statsText) || $statsText !== ""): ?>
+                  • <?= $statsText ?>
+                <?php endif; ?>
               </p>
               <div class="profile__actions">
                 <button class="profile__btn profile__btn--outline" id="editProfileBtn">
