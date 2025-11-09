@@ -97,7 +97,7 @@ $defaultCoverUrl = "../images/Default Playlist Cover.png";
 $defaultArtistImage = "../images/Default Artist Avatar.png";
 
 // Final JSON structure
-$mockData = [
+$searchData = [
   'tracks' => array_map(fn($track) => [
     'id' => (string) $track['track_id'],
     'title' => $track['track_title'],
@@ -133,4 +133,4 @@ $mockData = [
 
 // Output JSON
 header('Content-Type: application/json');
-echo json_encode($mockData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+echo json_encode($searchData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
